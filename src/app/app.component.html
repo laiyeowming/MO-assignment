@@ -1,0 +1,98 @@
+<div
+  class="container p-3 bg-secondary text-white rounded"
+  style="max-width: 600px"
+>
+  <h3>INTEREST CALCULATOR</h3>
+  <div class="p-2 bg-light text-dark rounded">
+    <div class="row justify-content-center">
+      <div class="col-4 py-2 my-auto">
+        <label for="principal">Principal:</label><br />
+      </div>
+      <div class="col-4 py-2">
+        <input
+          type="number"
+          id="principal"
+          min="0"
+          placeholder="10000"
+          [(ngModel)]="principal"
+        />
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-4 py-2 my-auto">
+        <label for="interestRate">Interest Rate:</label><br />
+      </div>
+      <div class="col-4 py-2">
+        <input
+          type="number"
+          id="interestRate"
+          step="0.001"
+          placeholder="3.785"
+          [(ngModel)]="interestRate"
+        />
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-4 py-2 my-auto">
+        <label for="time">Duration in Year(s):</label><br />
+      </div>
+      <div class="col-4 py-2">
+        <input
+          type="number"
+          id="time"
+          min="0"
+          placeholder="3.785"
+          [(ngModel)]="time"
+        />
+      </div>
+    </div>
+    <div class="py-4">
+      <div class="fs-5 text-center">
+        <p><strong>I = P x (R/100) x t</strong>, where</p>
+        <p>
+          <strong>(P)</strong> Principal = {{ principal | currency }}<br />
+          <strong>(R)</strong> Interest Rate = {{ interestRate }}%<br />
+          <strong>(t)</strong> Time = {{ time }} year(s)<br /><br />
+          <strong>ANSWER: (I)</strong> Interest =
+          {{ calculateInterest() | currency }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <br />
+  <h3>FIBONACCI SERIES</h3>
+  <div class="p-2 bg-light text-dark rounded">
+    <div class="p-3 justify-content-center">
+      <label for="terms" class="form-label">Base Input: {{ terms }}</label>
+      <input
+        type="range"
+        class="form-range"
+        min="0"
+        max="50"
+        step="1"
+        id="terms"
+        [(ngModel)]="terms"
+      />
+      <div class="d-flex justify-content-center">
+        <button (click)="fibonacci()" class="btn btn-primary">Compute</button>
+      </div>
+    </div>
+
+    <div class="p-4 text-center">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="col">n</th>
+            <th class="col-8">Fn</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let n of fibonacciSeries">
+            <td class="col">{{ n.n }}</td>
+            <td class="col-8">{{ n.Fn }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
